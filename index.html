@@ -1,0 +1,197 @@
+<!doctype html>
+
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Carta para Valeria</title>
+  <style>
+    :root{
+      --bg:#000000;
+      --neon:#9a4dff; /* morado neón */
+      --accent:#ffd86b; /* dorado suave */
+      --glass: rgba(255,255,255,0.03);
+      --text:#efe9ff;
+      --card-radius:18px;
+      --max-width:720px;
+    }html,body{
+  height:100%;
+  margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(154,77,255,0.06), transparent),
+              radial-gradient(900px 500px at 90% 90%, rgba(255,216,107,0.03), transparent),
+              var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  box-sizing:border-box;
+}
+
+.card{
+  width:100%;
+  max-width:var(--max-width);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(154,77,255,0.12);
+  border-radius:var(--card-radius);
+  padding:26px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 24px rgba(154,77,255,0.06) inset;
+  position:relative;
+  overflow:hidden;
+}
+
+/* borde neón sutil */
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  box-shadow: 0 0 30px rgba(154,77,255,0.12);
+  mix-blend-mode:screen;
+}
+
+h1{
+  margin:0 0 6px 0;
+  font-size:clamp(20px,5vw,28px);
+  letter-spacing:0.6px;
+  color:var(--neon);
+  text-shadow: 0 0 18px rgba(154,77,255,0.22);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.heart{
+  font-size:1.05em;
+  transform:translateY(2px);
+  filter:drop-shadow(0 6px 10px rgba(154,77,255,0.15));
+}
+
+p.lead{
+  margin:6px 0 18px 0;
+  color: #e9e0ff;
+  opacity:0.95;
+  line-height:1.5;
+  font-size:clamp(15px,4vw,17px);
+}
+
+/* caja del mensaje */
+.message{
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  border-radius:12px;
+  padding:16px;
+  border:1px solid rgba(255,255,255,0.02);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  color: #efe9ff;
+  font-size:clamp(15px,3.8vw,16px);
+  line-height:1.6;
+}
+
+.signature{
+  margin-top:18px;
+  text-align:right;
+  font-weight:600;
+  color:var(--neon);
+  letter-spacing:0.2px;
+}
+
+/* efecto escritura con líneas que cambian */
+.type-wrap{
+  margin-top:12px;
+  display:inline-block;
+  font-weight:600;
+  color:var(--accent);
+  font-size:clamp(14px,3.6vw,15px);
+}
+.type-text{
+  display:inline-block;
+  white-space:nowrap;
+  overflow:hidden;
+  border-right: .12em solid rgba(255,255,255,0.12);
+  box-sizing:content-box;
+  max-width:100%;
+}
+
+/* animación para alternar frases (cada 4s) */
+.type-text > span{
+  display:inline-block;
+  padding-right:6px;
+  animation: change 12s linear infinite 0s;
+}
+.type-text > span:nth-child(2){ animation-delay:4s; }
+.type-text > span:nth-child(3){ animation-delay:8s; }
+
+@keyframes change{
+  0% { opacity:0; transform: translateY(6px); }
+  8% { opacity:1; transform: translateY(0); }
+  30% { opacity:1; transform: translateY(0); }
+  38% { opacity:0; transform: translateY(-6px); }
+  100% { opacity:0; transform: translateY(-6px); }
+}
+
+/* corazones flotantes (algo nuevo y tierno) */
+.float-heart{
+  position:absolute;
+  bottom:-20%;
+  left:10%;
+  font-size:18px;
+  opacity:0.12;
+  transform: translateY(0) scale(1);
+  animation: floatUp 7s linear infinite;
+  pointer-events:none;
+  filter: blur(0.4px);
+}
+.float-heart.h2{ left:60%; font-size:26px; animation-duration:9s; opacity:0.08; }
+.float-heart.h3{ left:30%; font-size:20px; animation-duration:8s; opacity:0.10; }
+
+@keyframes floatUp{
+  0% { transform: translateY(0) scale(.9); opacity:0; }
+  10% { opacity:0.18; }
+  50% { transform: translateY(-140px) scale(1.1); opacity:0.22; }
+  100% { transform: translateY(-320px) scale(.9); opacity:0; }
+}
+
+/* responsive */
+@media (max-width:420px){
+  .card{ padding:18px; border-radius:14px; }
+  .signature{ font-size:14px; }
+}
+
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="titulo">
+    <h1 id="titulo">Mi princesa hermosa <span class="heart">💜</span></h1><p class="lead">No hace falta una fecha para recordarte lo especial que eres. Aquí tienes unas palabras que salen directo del corazón.</p>
+
+<div class="message" aria-live="polite">
+  <div>
+    Cada vez que pienso en ti, todo adquiere un tono más suave y brillante. Tu risa se queda pegada en mi cabeza como la mejor canción, y tus manos son el mapa al que siempre quiero volver.
+  </div>
+
+  <div style="margin-top:12px;">
+    Me pierdo en la idea de tus ojos y encuentro motivos para ser mejor. Quiero construir pequeños momentos contigo: un café a media tarde, una caminata sin rumbo, un abrazo que dure más de lo necesario.
+  </div>
+
+  <div class="type-wrap" aria-hidden="false">
+    <div class="type-text" role="status">
+      <span>Siempre pienso en tu sonrisa, Valeria.</span>
+      <span>Tu voz convierte cualquier día en un refugio.</span>
+      <span>Contigo, hasta lo simple se vuelve extraordinario.</span>
+    </div>
+  </div>
+
+  <div class="signature">Con todo mi cariño,<br>Juan K Mendoza P 💜</div>
+</div>
+
+<!-- corazones flotantes decorativos -->
+<div class="float-heart">💜</div>
+<div class="float-heart h2">✨</div>
+<div class="float-heart h3">💫</div>
+
+  </main>
+</body>
+</html>
